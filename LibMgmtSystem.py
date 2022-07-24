@@ -1,5 +1,3 @@
-"""Full Source Code"""
-
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -12,7 +10,7 @@ import smtplib
 import sqlite3
 import time
 import datetime
-from datetime import datetime
+from datetime import time
 from datetime import timedelta
 from datetime import date
 
@@ -24,7 +22,7 @@ root = Tk()
 root.title("Library Management System")
 root.iconbitmap('filename.ico')
 root.geometry("900x500+50+100")
-root.resizable(0, 0)
+root.resizable(0,0)
 
 class main:
     def login(self):
@@ -99,10 +97,10 @@ class main:
         self.canvas8 = Canvas(self.fm3, bg='black', width=400, height=300)
         self.canvas8.place(x=475, y=40)
         
-        self.photo9=PhotoImage(file="filename.png")
+        self.photo9=PhotoImage(file="img.png")
         self.canvas8.create_image(0,0,image=self.photo9,anchor=NW)
         
-        self.develop=Label(self.fm3,text='Developed By - Ishika',bg='#fff',fg='#d7837f'font=('Candara',12,'bold'))
+        self.develop=Label(self.fm3,text='Developed By - Shubham',bg='#fff',fg='#d7837f', font=('Candara',12,'bold'))
         self.develop.place(x=732,y=350)
         
         
@@ -236,14 +234,13 @@ class main:
                     self.pri=self.ee5.get()
 
                     if(self.id and self.ttl and self.aut and self.edi and self.pri):
-                            cursor=dbstore.cursor()
-                            cursor.execute("INSERT INTO Books(BookID,Title,Author,Edition,Price) values(?,?,?,?,?)",(self.id,
-                                                                                                            self.ttl,self.aut,self.edi,self.pri))
-                            dbstore.commit()
-                            messagebox.showinfo("Success","Book has been added to the library succesfully")
-                            self.clear()
+                        cursor=dbstore.cursor()
+                        cursor.execute("INSERT INTO Books(BookID,Title,Author,Edition,Price) values(?,?,?,?,?)",(self.id, self.ttl,self.aut,self.edi,self.pri))
+                        dbstore.commit()
+                        messagebox.showinfo("Success","Book has been added to the library succesfully")
+                        self.clear()
                     else:
-                            messagebox.showerror("Error", "Enter Valid Details")
+                        messagebox.showerror("Error", "Enter Valid Details")
                 except Exception as e:
                     messagebox.showerror("Error", "Enter Valid Details")
             
@@ -426,7 +423,7 @@ class main:
             def yes(self):
                 self.n=self.n+1
                
-                self.bt1 = Button(self.fr, text='SUBMIT', width=8, bg='#adefd1', fg='#00203f', font=('Canara', 12,'bold'),bd=5,relief='flat',command=self.data,activeforeground='#adefd1',activebackground='#00203f',state=ACTIVE)
+                self.bt1 = Button(self.fr, text='SUBMIT', width=8, bg='#adefd1', fg='#00203f', font=('Canara', 12,'bold'),bd=5,relief='flat',command=self.data,activeforeground='#adefd1', activebackground='#00203f',state=ACTIVE)
                 self.bt1.place(x=15, y=160)
     
                 self.e1.delete(0, END)
@@ -435,7 +432,7 @@ class main:
                 self.max=self.max-1
                 
             def no(self):
-                self.bt1 = Button(self.fr, text='SUBMIT', width=8, bg='#adefd1', fg='#00203f', font=('Canara', 12,'bold'),bd=5,relief='flat',command=self.data,activeforeground='#adefd1',activebackground='#00203f',state=DISABLED)
+                self.bt1 = Button(self.fr, text='SUBMIT', width=8, bg='#adefd1', fg='#00203f', font=('Canara', 12,'bold'),bd=5,relief='flat',command=self.data,activeforeground='#adefd1', activebackground='#00203f',state=DISABLED)
                 self.bt1.place(x=15, y=160)
             
             def issued(self):
@@ -709,7 +706,6 @@ class main:
     def delete(self):
         class dele(main):
             def deletebooks(self):
-            
                 self.ff = Frame(root, bg='#ffe8ec', width=900, height=390)
                 self.ff.place(x=0, y=110)
                 self.f1 = Frame(self.ff, bg='#ffe8ec', width=500, height=200, bd=5, relief='flat')
@@ -868,8 +864,8 @@ class main:
                 cursor.execute("SELECT * FROM Books")
                 self.rows=cursor.fetchall()
                 if len(self.rows)!=0:
-                        for self.row in self.rows:
-                                self.book_table.insert('',END,values=self.row)
+                    for self.row in self.rows:
+                        self.book_table.insert('',END,values=self.row)
                 dbstore.commit()
                 
         oc=test()
